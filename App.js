@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 // Store
 import store from "./store";
 
-export default class App extends Component {
+class App extends Component {
   state = {
     loading: true
   };
@@ -30,3 +30,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;

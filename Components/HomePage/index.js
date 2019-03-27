@@ -16,6 +16,7 @@ import Login from "../Login";
 
 // Actions
 import { getCoffeeShops } from "../../store/actions/coffeeActions";
+import AppContainer from "../../Navigation";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -25,8 +26,7 @@ class HomePage extends Component {
     return (
       <Container style={styles.transparent}>
         <View style={styles.overlay} />
-        <Header style={styles.transparent} />
-        <CoffeeList />
+        <AppContainer />
       </Container>
     );
   }
