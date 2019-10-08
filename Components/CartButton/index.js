@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { Icon } from "native-base";
 import { withNavigation } from "react-navigation";
-
+import Counter from "../Counter";
 class CartButton extends Component {
   render() {
     return (
-      <Icon
-        onPress={() => this.props.navigation.navigate("CoffeeCart")}
-        name="shoppingcart"
-        type="AntDesign"
-      />
+      <View>
+        <Counter />
+        <Icon
+          onPress={() => this.props.navigation.navigate("CoffeeCart")}
+          name="shoppingcart"
+          type="AntDesign"
+        />
+      </View>
     );
   }
 }
