@@ -20,3 +20,44 @@ export const getCoffeeShops = () => {
 export const setCoffeeShopsLoading = () => ({
   type: actionTypes.COFFEESHOPS_LOADING
 });
+
+export const addItemToCart = item => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: actionTypes.ADD_ITEM,
+        payload: item
+      });
+    } catch (err) {
+      console.error(error);
+      console.error("Error while adding to cart", err);
+    }
+  };
+};
+
+export const removeItemFromCart = item => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: actionTypes.REMOVE_ITEM,
+        payload: item
+      });
+    } catch (err) {
+      console.error(error);
+      console.error("Error while removing item", err);
+    }
+  };
+};
+
+export const checkoutCart = () => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: actionTypes.CHECKOUT
+      });
+    } catch (err) {
+      console.error(error);
+      console.error("Error while checking out", err);
+    }
+  };
+};

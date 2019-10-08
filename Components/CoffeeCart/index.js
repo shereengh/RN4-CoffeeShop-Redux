@@ -19,7 +19,7 @@ class CoffeeCart extends Component {
     return (
       <List>
         {cartItems}
-        <Button full danger>
+        <Button onPress={() => this.props.checkoutCart} full danger>
           <Text>Checkout</Text>
         </Button>
       </List>
@@ -30,5 +30,12 @@ class CoffeeCart extends Component {
 const mapStateToProps = state => ({
   items: state.cartReducer.items
 });
-
-export default connect(mapStateToProps)(CoffeeCart);
+const mapDispatchToProps = dispatch => {
+  return {
+    checkoutCart: () => dispatch(checkoutCart())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoffeeCart);

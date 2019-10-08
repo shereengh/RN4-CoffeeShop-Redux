@@ -46,6 +46,15 @@ class CoffeeDetail extends Component {
     });
   };
 
+  submitHandler = () => {
+    item = {
+      drink: this.state.drink,
+      option: this.state.option,
+      quantity: "1"
+    };
+    this.props.addItemToCart(item);
+  };
+
   render() {
     const { coffeeShops, loading } = this.props.coffeeReducer;
     if (loading) return <Content />;
@@ -93,7 +102,7 @@ class CoffeeDetail extends Component {
               </Picker>
             </Body>
           </ListItem>
-          <Button full danger>
+          <Button onPress={() => this.submitHandler} full danger>
             <Text>Add</Text>
           </Button>
         </List>
@@ -105,5 +114,12 @@ class CoffeeDetail extends Component {
 const mapStateToProps = state => ({
   coffeeReducer: state.coffeeReducer
 });
-
-export default connect(mapStateToProps)(CoffeeDetail);
+const mapDispatchToProps = dispatch => {
+  return {
+    addItemToCart: item => dispatch(addItemToCart(item))
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoffeeDetail);
