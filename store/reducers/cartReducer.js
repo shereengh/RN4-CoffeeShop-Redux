@@ -14,7 +14,7 @@ const initialState = {
   ],
   counter: 3
 };
-
+//counter done
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
