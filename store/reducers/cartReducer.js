@@ -12,26 +12,41 @@ const initialState = {
       quantity: 1
     }
   ],
-  counter: 0
+  counter: 2
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
+      let incomingItem = action.payload;
+      let foundItem = state.items.find(
+        item =>
+          item.drink === incomingItem.drink &&
+          item.option === incomingItem.option
+      );
       let counter = state.counter + 1;
-      return {
-        ...state,
-        items: state.items.concat(payload),
-        counter: counter
-      };
+      if (foundItem) {
+        foundItem.quantity++;
+        return {
+          ...state,
+          items: [...state.items]
+        };
+      } else {
+        return {
+          ...state,
+          items: state.items.concat(incomingItem),
+          counter: counter
+        };
+      }
+
     case REMOVE_ITEM:
-      const temp = payload;
-      const items = items.filter(item => item !== temp);
-      let counter = state.counter - 1;
+      const temp = action.payload;
+      const items = state.items.filter(item => item !== temp);
+      let counter2 = state.counter - 1;
       return {
         ...state,
         items: items,
-        counter: counter
+        counter: counter2
       };
     case CHECKOUT:
       return {

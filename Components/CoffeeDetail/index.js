@@ -22,6 +22,8 @@ import styles from "./styles";
 import coffeeshops from "../CoffeeList/list";
 import CartButton from "../CartButton";
 
+import * as actionCreators from "../../store/actions/coffeeActions";
+
 class CoffeeDetail extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -46,15 +48,13 @@ class CoffeeDetail extends Component {
     });
   };
 
-  submitHandler = () => {
-    item = {
-      drink: this.state.drink,
-      option: this.state.option,
-      quantity: "1"
+  handleAddItem = () => {
+    const newItem = {
+      ...this.state,
+      quantity: 1
     };
-    this.props.addItemToCart(item);
+    this.props.addItem(newItem);
   };
-
   render() {
     const { coffeeShops, loading } = this.props.coffeeReducer;
     if (loading) return <Content />;
@@ -102,7 +102,7 @@ class CoffeeDetail extends Component {
               </Picker>
             </Body>
           </ListItem>
-          <Button onPress={() => this.submitHandler} full danger>
+          <Button full danger onPress={this.handleAddItem}>
             <Text>Add</Text>
           </Button>
         </List>
@@ -114,11 +114,11 @@ class CoffeeDetail extends Component {
 const mapStateToProps = state => ({
   coffeeReducer: state.coffeeReducer
 });
-const mapDispatchToProps = dispatch => {
-  return {
-    addItemToCart: item => dispatch(addItemToCart(item))
-  };
-};
+
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(actionCreators.addItemToCart(item))
+});
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

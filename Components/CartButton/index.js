@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Icon } from "native-base";
 import { withNavigation } from "react-navigation";
 import Counter from "../Counter";
+import { View } from "react-native";
 class CartButton extends Component {
   render() {
     return (

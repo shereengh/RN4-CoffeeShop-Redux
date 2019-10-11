@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import removeItemFromCart from "../../store/actions/coffeeActions";
 
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
@@ -21,7 +22,7 @@ class CartItem extends Component {
         <Right>
           <Button
             transparent
-            onClick={() => this.props.removeItemFromCart(item)}
+            onPress={() => this.props.removeItemFromCart(item)}
           >
             <Icon name="trash" style={{ color: "white", fontSize: 21 }} />
           </Button>
@@ -31,12 +32,4 @@ class CartItem extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    removeItemFromCart: item => dispatch(removeItemFromCart(item))
-  };
-};
-export default connect(
-  null,
-  mapDispatchToProps
-)(CartItem);
+export default CartItem;

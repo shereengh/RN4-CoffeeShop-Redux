@@ -22,42 +22,17 @@ export const setCoffeeShopsLoading = () => ({
 });
 
 export const addItemToCart = item => {
-  return async dispatch => {
-    try {
-      dispatch({
-        type: actionTypes.ADD_ITEM,
-        payload: item
-      });
-    } catch (err) {
-      console.error(error);
-      console.error("Error while adding to cart", err);
-    }
+  return {
+    type: actionTypes.ADD_ITEM,
+    payload: item
   };
 };
 
-export const removeItemFromCart = item => {
-  return async dispatch => {
-    try {
-      dispatch({
-        type: actionTypes.REMOVE_ITEM,
-        payload: item
-      });
-    } catch (err) {
-      console.error(error);
-      console.error("Error while removing item", err);
-    }
-  };
-};
+export const removeItemFromCart = item => ({
+  type: actionTypes.REMOVE_ITEM,
+  payload: item
+});
 
-export const checkoutCart = () => {
-  return async dispatch => {
-    try {
-      dispatch({
-        type: actionTypes.CHECKOUT
-      });
-    } catch (err) {
-      console.error(error);
-      console.error("Error while checking out", err);
-    }
-  };
-};
+export const checkoutCart = () => ({
+  type: actionTypes.CHECKOUT
+});
