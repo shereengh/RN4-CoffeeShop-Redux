@@ -12,7 +12,7 @@ const initialState = {
       quantity: 1
     }
   ],
-  counter: 2
+  counter: 3
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -29,7 +29,8 @@ const cartReducer = (state = initialState, action) => {
         foundItem.quantity++;
         return {
           ...state,
-          items: [...state.items]
+          items: [...state.items],
+          counter: counter
         };
       } else {
         return {
@@ -51,7 +52,8 @@ const cartReducer = (state = initialState, action) => {
     case CHECKOUT:
       return {
         ...state,
-        items: []
+        items: [],
+        counter: 0
       };
     default:
       return state;
